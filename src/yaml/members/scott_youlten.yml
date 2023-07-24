@@ -1,0 +1,19 @@
+about: Scott is an Associate Research Scientist at Yale University in the Krishnaswamy
+  Lab and Giraldez Lab. As a computational biologist from a molecular biology lab
+  background, his role bridges computational and biological domains, developing and
+  applying novel tools for biomedical data analysis. Scott is motivated by the thrill
+  of biological discovery and my fascination with finding coherent patterns within
+  complex data. He loves the challenge of communicating science in a way that can connect
+  with the intellect of people from outside his field. The tenets of Scott's career are
+  integrity, enjoyment and discovery.
+image: /images/members/scott_youlten.png
+name:
+  first: Scott
+  last: Youlten
+  middle: E.
+  preferred: Scott
+name_str: Scott E. Youlten
+publications:
+- Single-cell multi-modal GAN reveals spatial patterns in single-cell data from triple-negative
+  breast cancer
+status: postdoc

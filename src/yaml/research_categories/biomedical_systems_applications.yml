@@ -1,0 +1,9 @@
+about: "Combining all our prior efforts, we apply them to high dimensional, high throughput data to unravel the mysteries of biomedical systems including: stem cell development, behavioral neuroscience, molecular neuroscience, immunology, cancer, and structural biology." 
+examples:
+- href: /projects/phemd
+  text: PhEMD
+- href: /projects/meld
+  text: MELD
+image: /images/heroes/karyotype.png
+title: Biomedical Systems Applications
+sort: 5
