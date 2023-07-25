@@ -25,26 +25,7 @@
     $: heroTitle = handleProjectTitle(data?.project)
     $: backgroundImage = String(data?.project.hero.image)
     $: subtitle = String(data?.project?.hero.blurb)
-
-    import TwitterSEO from '$lib/SEO/Twitter.svelte'
-	import OpenGraphSEO from '$lib/SEO/OpenGraph.svelte'
 </script>
-
-<TwitterSEO
-    url="https://www.KrishnaswamyLab.org/projects/{data?.slug}"
-    title="Kirshnaswamy Lab: {heroTitle}"
-    description="{heroTitle}: {subtitle}. {data?.project?.publication?.abstract?.slice(0,300)}..."
-    image="{data?.project?.hero?.image}"
-    author={data?.project?.publication?.authors.join(', ')}
-/>
-<OpenGraphSEO
-    url="https://www.KrishnaswamyLab.org/projects/{data?.slug}"
-    title="Kirshnaswamy Lab: {heroTitle}"
-    description="{heroTitle}: {subtitle}. {data?.project?.publication?.abstract?.slice(0,300)}..."
-    image="{data?.project?.hero?.image}"
-    articleAuthor={data?.project?.publication?.authors.join(', ')}
-/>
-
 
 
 <Hero {backgroundImage} {subtitle}>

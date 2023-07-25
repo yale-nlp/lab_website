@@ -5,28 +5,17 @@
 	import '../styles/app.css'
 
 	import type {Links} from '$lib/types'
-	import {LabTwitterLink} from '$lib/utils'
 	
 	const routes: Links = [
 		{text: 'projects', href: '/projects'},
 		{text: 'publications', href: '/publications'},
-		{text: 'workshop', href: '/workshop'},
-		{text: 'teaching', href: '/teaching'},
-		{text: 'members', href: '/members'},
-		{text: 'join', href: '/join'},
-		{text: 'contact', href: '/contact'},		
+		{text: 'members', href: '/members'},	
 	]
 
-    
 	import Navigation from "$lib/Layout/Navigation.svelte";
 	import Footer from "$lib/Layout/Footer.svelte";
-	import FollowUsBtn from "$lib/Layout/FollowUsBtn.svelte";
-	import TwitterSEO from '$lib/SEO/Twitter.svelte'
-	import OpenGraphSEO from '$lib/SEO/OpenGraph.svelte'
 	
 </script>
-<!-- <TwitterSEO/>
-<OpenGraphSEO/> -->
 
 <Navigation {routes} />
 

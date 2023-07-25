@@ -34,50 +34,15 @@ const adjustGroup = (group) => {
         case 'postdoc':
             return 'Postdoctoral Fellows'
             break;
-        case 'PhD Student':
-            return 'PhD Students'
-            break;
-        case 'undergraduate':
-            return 'Undergraduate Students'
-            break;
-        case 'Masters Student':
-            return 'Masters Students'
-            break;
-        case 'Undergraduate Student':
-            return 'Undergraduate Students'
-            break;
-        case 'Research Assistant':
-            return 'Research Assistants'
-            break;
-        case 'Research Associate':
-            return 'Research Associates'
-            break;
-        default:
-            'Members'
-            break
     }
 }
 
 const groupOrder = [
     'PI', 
     'postdoc', 
-    'PhD Student', 
-    'undergraduate',
 ]
 
-import TwitterSEO from '$lib/SEO/Twitter.svelte'
-import OpenGraphSEO from '$lib/SEO/OpenGraph.svelte'
-
 </script>
-
-<TwitterSEO
-    title="Members of the Krishnaswamy Lab"
-    url="https://www.krishnaswamylab.org/members"
-/>
-<OpenGraphSEO
-    title="Members of the Krishnaswamy Lab"
-    url="https://www.krishnaswamylab.org/members"
-/>
 
 <Hero></Hero>
 
@@ -121,31 +86,5 @@ import OpenGraphSEO from '$lib/SEO/OpenGraph.svelte'
         {error.message}
     {/await}       
     
-    
-    {#await past}
-        Loading Members...
-    {:then members}
-    
-        <div in:fly={{y:200, delay: 100, duration: 1500}} >
-            <TextHero 
-                class="{useStickyTextHero ? stickyClasses : ''}"
-            >
-                Krishnaswamy Lab Alumni
-            </TextHero>
-        </div>
-        <div class="my-4 py-4">
-        {#each members as member, i }
-            {#if member?.about}
-                <MemberInfo 
-                    {member} {useStickyTextHero}
-                    delay={i * 100}
-                    showDivider={i < past.length - 1}
-                />   
-            {/if}             
-        {/each}
-        </div>
-    {:catch error}
-        {error.message}
-    {/await} 
 </JellyContainer>
 {/if}

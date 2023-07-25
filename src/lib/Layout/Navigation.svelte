@@ -4,12 +4,8 @@
     import { goto } from '$app/navigation';
 	export let routes: Links = [
 		{text: 'projects', href: '/projects'},
-		{text: 'workshop', href: '/workshop'},
 		{text: 'publications', href: '/publications'},
-		{text: 'teaching', href: '/teaching'},
-		{text: 'members', href: '/members'},
-		{text: 'join', href: '/join'},
-		{text: 'contact', href: '/contact'},		
+		{text: 'members', href: '/members'},	
 	]
 </script>
 
@@ -17,7 +13,7 @@
 <div class="navbar inset-x-0 top-0 absolute text-secondary-content">
 	<div class="flex-1">
 		<a class="btn btn-ghost normal-case text-2xl font-bold" href="/">
-			Krishnaswamy Lab
+			Yale NLP Lab
 		</a>
 	</div>
 

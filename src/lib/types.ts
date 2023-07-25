@@ -118,33 +118,13 @@ export interface PublicationsGroupedByYear {
     [key: string]: Publications;
 }
 export interface Project {    
-    // link to project specific page
     href:string;
-
-    // title of project
     title: string;    
-    // abbreviation if a method, e.g. MAGIC
     abbreviation?: string;        
-    // description to use in list at top of /projects page
     description?: string;
 
     hero: ImageHero;
-        // title <-- abrev // title
-        // blurb
-        // image
-    
     publication: Publication;
-        // title <--- publicationTitle
-        // authors <-- authors
-        // year <-- publicationYear
-        // abstract <-- publicationAbstract
-        // periodical <-- journal
-        // periodicalImage <-- journalImage
-        // href <-- publicationLink
-        // github <-- githubLink
-        // poster <-- publicationPoster
-        // keyImage <-- publicationImage
-        // youtube <-- youtube    
     makeTextAboutLinks: () => string;
 }
 
