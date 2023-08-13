@@ -1,7 +1,5 @@
 description: a method for computing diffusion-based curvature on high-dimensional
-  data that hinges on the canonical data diffusion framework. Allows for estimation
-  of neural network Hessians as well as curvature-based inference on point cloud data
-  such as single-cell data.
+  data that hinges on the canonical data diffusion framework.
 hero:
   blurb: Estimating Local Curvature in High Dimensional Data
   image: /images/projects/diffusion_curvature_hero.jpg

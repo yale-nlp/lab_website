@@ -27,9 +27,9 @@ import JellyContainer from "$lib/Layout/JellyContainer.svelte";
     <br>
     <div class="flex flex-col items-center justify-center w-full">
         <ol class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {#each data.projects as project}
+            {#each data.projects as project}           
             <ProjectListItem {project} />
-        {/each}  
+            {/each}  
         </ol>
     </div>
 

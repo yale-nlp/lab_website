@@ -1,12 +1,11 @@
 abbreviation: MSPHATE
 description: Capturing meaningful biological signals in high-dimensional data using
-  a continuous coarse-graining process which can be used to produce both a high-level
-  summarization and more detailed representations of the data.
+  a continuous coarse-graining process.
 hero:
   blurb: Abstracted biological features across all levels of data granularity
   image: /images/projects/multiscale_phate_hero.png
   title: MSPHATE
-href: multiscale_phate
+href: multiscale_phate1
 publication:
   abstract: "As the biomedical community produces datasets that are increasingly complex
     and high dimensional, there is a need for more sophisticated computational tools

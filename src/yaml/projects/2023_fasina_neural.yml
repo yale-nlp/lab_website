@@ -1,7 +1,6 @@
 abbreviation: NeuralFIM
 description: a network that imbues point cloud data with smooth manifold-intrinsic
-  geometric entities on high-dimensional data with fisher information metrics. Also
-  has connections to JSD-PHATE and other desirable information theoretic quantities.
+  geometric entities on high-dimensional data with fisher information metrics.
 hero:
   blurb: point cloud data with smooth manifold-intrinsic geometric entities
   image: /images/projects/neural_fim_hero.jpg
