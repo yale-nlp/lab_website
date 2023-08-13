@@ -33,7 +33,7 @@
 </Hero>
 
 <div class="flex flex-col md:flex-row justify-center mt-8 mx-16">
-    <div class="max-w-min lg:w-[16rem] mt-4">  
+    <!-- <div class="max-w-min lg:w-[16rem] mt-4">  
         <div class="hidden lg:block sticky top-0 ">
             <span class="font-extralight text-slate-700 text-4xl">
                 <a href="/projects">
@@ -66,7 +66,7 @@
             </div>
             
         </div>                              
-    </div> 
+    </div>  -->
 
     <div class="lg:ml-16">  
         <ProjectInfo  

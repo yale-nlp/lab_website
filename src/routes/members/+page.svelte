@@ -46,38 +46,32 @@ const groupOrder = [
 
 <Hero></Hero>
 
-{#if animate}
 <JellyContainer>
     {#await groups}
         Loading Members...
     {:then results}
-        <div in:fly={{y:200, delay: 100, duration: 1500}} >
-            <TextHero 
-                class="{useStickyTextHero ? stickyClasses : ''}"
-            >
-                Krishnaswamy Lab Members
-            </TextHero>
-        </div>
+
         <div class="my-4 py-4">
         {#each groupOrder as group, g}
         {@const members = results[group]}
             <div class="my-4 py-4">         
-                <div in:fly={{y:200, delay: 0, duration: 1500}} >
+                <div>
                     <TextHero class="py-0 pt-0">
                         <div slot="tagline" class="py-0 pt-0">
                         {adjustGroup(group)}
                         </div>
                     </TextHero>
-
-                    {#each members as member, i }
-                        {#if member?.about}
+                    
+                    <div class="flex flex-col items-center justify-center w-full">
+                        <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                            {#each members as member, i }        
                             <MemberInfo 
                                 {member} {useStickyTextHero}
-                                delay={i * 100}
                                 showDivider={i < curr.length - 1}
-                            />   
-                        {/if}             
-                    {/each}
+                            /> 
+                            {/each}  
+                        </ol>
+                    </div>
                 </div>
             </div>
         {/each}
@@ -87,4 +81,3 @@ const groupOrder = [
     {/await}       
     
 </JellyContainer>
-{/if}

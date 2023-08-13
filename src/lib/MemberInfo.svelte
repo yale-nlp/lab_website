@@ -1,122 +1,86 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
-    import { browser } from '$app/environment';
-    import type {Member as MemberInterface} from '$lib/types'
-    import {Member} from '$lib/classes'
+    import type { Member as MemberInterface } from '$lib/types';
+    import { Member } from '$lib/classes';
 
-    import {openUrlInNewTab, lipsum} from '$lib/utils'
-        
     export let member = new Member({
-        name: {first:'Lab', last:'Member'},
-        title: 'PhD',
+        name: { first: 'Lab', last: 'Member' },
         image: '',
-        about: lipsum
-    } as MemberInterface)
+        about: 'Detailed information about the person...',
+    } as MemberInterface);
 
-    $: img = true // member.image
-
-    $: styleCardSide = img ? "lg:card-side" : ""
-    $: styleCardWidth = img ? "lg:min-w-min lg:w-1/2" : ""
-
-    const toCv = () => {
-        let url = String(member?.cv)
-        openUrlInNewTab(url)
-    }
-    const toWebsite = () => {
-        let url = String(member?.website)
-        openUrlInNewTab(url)
-        
-    }
-
-    $: about = member?.about 
-        ? member?.about.replace('\n', '<br/>')
-        : null   
-
-    export let useStickyTextHero = false;
-    export let useStickyImages = true;
-    const stickyClasses = useStickyTextHero 
-        ? 'top-32 sm:top-28 z-50'
-        : 'top-0 z-50'
-
-    
-    import { onMount } from 'svelte'
-    import { fly, fade } from 'svelte/transition';
-    import { flip } from 'svelte/animate';
-    export let delay:number = 0 
-    export let showDivider:boolean = false
-    let animate = false
-    onMount(() => {
-        animate = true
-    })
+    let showDetails = false;
 </script>
-{#if animate}
-<div in:fly={{y:200, delay: delay, duration: 1500}} >
-<div
-    
-    class="card {styleCardSide} ease-in-out duration-300 "
->
-    <!-- hover:shadow-2xl -->
 
-    <!-- {#if member?.image} -->
-    
-    <figure class="m-8 flex-col bg-base-100 {useStickyImages ? 'sticky' : ''} {stickyClasses}">
-        <div class="card-body {styleCardWidth} py-2 lg:hidden">
-            <h2 class="card-title sticky">
-                {#if typeof member.name === 'object'}
-                    {member.name_str}
-                {:else}
-                    {member?.name}{#if member?.title}, {member?.title}{/if}
-                {/if}
-            </h2>
-        </div>        
-        <div class="avatar inline-flex place-content-center place-items-start">
-            <div class="
-                w-48 mask mask-squircle 
-                bg-gradient-to-r from-cyan-500 to-blue-500                
-                "
-            >
-                <!-- {member?.image ? '' : 'animate-pulse'} -->
-                <!-- min-w-max max-h-max h-48 inline-flex -->
-                {#if member?.image}
-                <img 
-                    src={member?.image} 
-                    alt="{`${member?.name_str} profile image`}"
-                />
-                {/if}
-            </div>
-        </div>            
-    </figure>   
-    <!-- {/if}      -->
+<style>
+    .card {
+        position: relative;
+        width: 100%; /* Increased width of the card */
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        overflow: hidden;
+    }
 
-    <div class="card-body {styleCardWidth}">
-        <h2 class="hidden lg:block card-title sticky">
-            {#if typeof member.name === 'object'}
-                {member.name_str}
-            {:else}
-                {member?.name}{#if member?.title}, {member?.title}{/if}
-            {/if}
-            
-        </h2>
-        <div class="lg:max-h-48 lg:overflow-y-scroll">
-            <!-- max-h-48 overflow-y-scroll -->
-            {@html about}
+    .details-container {
+        background-color: rgb(255, 140, 0);
+        color: white;
+        padding: 20px;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    .details-container.active {
+        opacity: 1;
+    }
+
+    .details-container h2 {
+        text-align: center;
+        font-size: large;
+        font-weight: 600;
+    }
+
+    .avatar {
+        width: 150px; /* Increased width */
+        height: 150px; /* Increased height */
+        margin: 0 auto; /* Centering the image */
+    }
+
+    .avatar > div {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card-body {
+        color: black;
+    }
+
+    .card-body h2 {
+        margin: 10px 0; /* Added some margin around the name */
+    }
+</style>
+
+<div class="card" on:mouseenter={() => showDetails = true} on:mouseleave={() => showDetails = false}>
+    <figure class="flex-col bg-base-100" class:hidden={showDetails}>
+        <div class="avatar inline-flex place-content-center place-items-start rounded-full bg-gradient-to-r from-cyan-500 to-blue-500">
+            <img src={member?.image} alt="{`${member?.name_str} profile image`}" class="w-full h-auto rounded-full" />
         </div>
-        {#if member?.website || member?.cv}
-            <div class="card-actions justify-end">
-                {#if member?.website!==null}                    
-                    <button class="btn btn-primary btn-outline" on:click={toWebsite}>
-                        Website
-                    </button>
-                {/if}
-                {#if member?.cv} 
-                    <button class="btn btn-secondary btn-outline" on:click={toCv}>C.V.</button>
-                {/if}                
-            </div>
-        {/if}            
+    </figure>
+
+    <div class="card-body">
+        <h2 class="card-title sticky {showDetails ? 'hidden' : ''}">
+            {member?.name}
+        </h2>
     </div>
-</div>   
-    {#if showDivider}
-        <div class="divider divider-vertical h-8"></div>
+
+    {#if showDetails}
+        <div class="details-container active">
+            <h2>{member?.name}</h2>
+            <p>{member?.about}</p>
+        </div>
     {/if}
 </div>
-{/if}
