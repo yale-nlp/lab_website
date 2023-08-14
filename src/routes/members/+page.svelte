@@ -64,11 +64,8 @@ const groupOrder = [
                     
                     <div class="flex flex-col items-center justify-center w-full">
                         <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                            {#each members as member, i }        
-                            <MemberInfo 
-                                {member} {useStickyTextHero}
-                                showDivider={i < curr.length - 1}
-                            /> 
+                            {#each members as member}        
+                            <MemberInfo {member}/> 
                             {/each}  
                         </ol>
                     </div>
