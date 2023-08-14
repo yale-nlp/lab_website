@@ -66,44 +66,20 @@ export interface ImageHero {
 }
 
 export interface Publication {
-    type: string;
-    href: string;    
+    project: string;
+    url: string;    
     year: number;
     title: string;
     authors: string[];    
     abstract: string;        
-    // Nature Biotechnology   
-    periodical:string;    
-    // Nature Publishing Group
-    publisher?: string;
-    // periodical <-- journal
-    periodicalImage?: string;
-    
-    github?: string;
-    poster?: string;   
-    slides?: string; 
-    youtube?: string;
-    keyImage?: string;
-
-    keywords?: string[];
-    selected?: boolean;
-    month?: number;
-    pages?: string;
-    issue?: number;
-    volume?: number;
+    venue?: string;
 
     makeAuthorString: () => string;
-    makeDateString: () => string;
-    makeVolumeIssueString: () => string;
     makePublicationString: () => string;
-    makeKeywordsString: () => string;
-    hasBothGithubAndJournal: () => boolean;
-    hasOneOfGithubOrJournal: () => boolean;
 }
 
 export type Publications = Publication[] 
     | Array<Publication> 
-    // | ArrayLike<Publication>
 
 export interface PublicationsGroupedByYear {
     [key: string]: Publications;

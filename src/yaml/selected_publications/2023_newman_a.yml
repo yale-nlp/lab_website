@@ -1,0 +1,23 @@
+abstract: Many real-world applications require surfacing extracted snippets to users,
+  whether motivated by assistive tools for literature surveys or document cross-referencing,
+  or needs to mitigate and recover from model generated inaccuracies., Yet, these
+  passages can be difficult to consume when divorced from their original document
+  context. In this work, we explore the limits of LLMs to perform decontextualization
+  of document snippets in user-facing scenarios, focusing on two real-world settings
+  - question answering and citation context previews for scientific documents. We
+  propose a question-answering framework for decontextualization that allows for better
+  handling of user information needs and preferences when determining the scope of
+  rewriting. We present results showing state-of-the-art LLMs under our framework
+  remain competitive with end-to-end approaches. We also explore incorporating user
+  preferences into the system, finding our framework allows for controllability.
+authors:
+- Benjamin Newman
+- Luca Soldaini
+- Raymond Fok
+- Arman Cohan
+- Kyle Lo
+project: other
+title: A Controllable QA-based Framework for Decontextualization
+url: https://www.semanticscholar.org/paper/366c9bf93e9f5cc64bffdb4dc1e98943f597e941
+venue: arXiv.org
+year: 2023

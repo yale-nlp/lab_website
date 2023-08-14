@@ -55,51 +55,22 @@ export class Member implements MemberInterface {
 }
 
 export class Publication implements PublicationInterface {
-    type;
-    href;
+    project;
+    url;
     year;
     title;    
     authors;
     abstract;
-    periodical;
-    publisher;
-    periodicalImage;
-    github;
-    poster;
-    slides;
-    youtube;
-    keyImage;
-    keywords;
-    selected;
-    month;
-    pages;
-    issue;
-    volume;
+    venue;
     
     constructor(publication:PublicationInterface) {        
-        this.type = publication.type
-        this.href = publication.href
+        this.project = publication.project
+        this.url = publication.url
         this.year = publication.year
         this.title = publication.title
         this.authors = publication.authors
         this.abstract = publication.abstract
-        this.periodical = publication.periodical
-        this.publisher = publication.publisher
-
-        this.periodicalImage = publication.periodicalImage
-        
-        this.github = publication.github
-        this.poster = publication.poster
-        this.slides = publication.slides
-        this.youtube = publication.youtube
-        this.keyImage = publication.keyImage
-
-        this.keywords = publication.keywords
-        this.selected = publication.selected
-        this.month = publication.month
-        this.pages = publication.pages
-        this.issue = publication.issue
-        this.volume = publication.volume
+        this.venue = publication.venue
     }
 
     makeAuthorString() {        
@@ -110,11 +81,8 @@ export class Publication implements PublicationInterface {
         let s = ''
         for (let index = 0; index < a.length; index++) {            
             const name = a[index];
-            if (name === 'Smita Krishnaswamy') {
-                s += `<span class="font-bold">${name}</span>`
-            } else {
-                s += name
-            }
+            
+            s += name
             if (index < a.length - 2) {
                 s += ', '
             } else if (index < a.length - 1) {
@@ -124,67 +92,8 @@ export class Publication implements PublicationInterface {
         return s
     }
 
-    makeDateString() {
-        if (this?.year === null) return ''
-        let s
-        if (this?.month && this?.year) {
-            s = `(${this?.month}, ${this?.year})`
-        } else if (this?.year) {
-            s = `(${this?.year})`
-        } else {
-            return ''
-        }
-        return s
-    }
-    
-    makeVolumeIssueString() {
-        if (this?.volume === null) return ''
-        let s = ''
-        if (this?.issue && this?.volume) {
-            s = `${this?.issue}:<span class="font-bold">${this?.volume}</span>.`
-        } else if (this?.volume) {
-            s = `<span class="font-bold">${this?.volume}</span>.`
-        } else {
-            return ''
-        }
-        if (this?.pages) {
-            if (this?.pages.indexOf((String(this?.volume))) >= 0) {
-                return s
-            } else {
-                s += ` ${this?.pages}`
-            }
-        }
-        return s
-    }
-
     makePublicationString() {
-        let s = ``
-        s += `${this.makeDateString()}`
-        s += ` ${this.makeVolumeIssueString()}`
-
-        let p = this.periodical
-
-        p = p.replace(':', '')
-        p = p.replace(String(this?.volume), '')
-        p = p.replace(String(this?.issue), '')
-        p = p.replace(String(this.month), '')
-        p = p.replace(String(this.year), '')
-        p = p.replace('|', '')
-        s += ` ${p}`
-        return s
-    }
-
-    makeKeywordsString() {        
-        if (!this.keywords) return ''
-        return this.keywords.join(', ') 
-    }
-
-    hasBothGithubAndJournal() {
-        return this?.github !== undefined && this?.href !== undefined
-    }
-
-    hasOneOfGithubOrJournal() {
-        return this?.github !== undefined || this?.href !== undefined
+        return this.venue
     }
 }
 

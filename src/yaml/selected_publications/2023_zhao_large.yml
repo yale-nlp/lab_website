@@ -1,0 +1,28 @@
+abstract: Large language models (LLMs) have shown remarkable ability on controllable
+  text generation. However, the potential of LLMs in generating text from structured
+  tables remains largely under-explored. In this paper, we study the capabilities
+  of LLMs for table-to-text generation tasks, particularly aiming to investigate their
+  performance in generating natural language statements that can be logically entailed
+  by a provided table. First, we investigate how LLMs compare to state-of-the-art
+  table-to-text fine-tuned models, and demonstrate that LLMs can generate statements
+  with higher faithfulness compared with previous state-of-the-art fine-tuned models.
+  Given this finding, we next explore whether LLMs can serve as faithfulness-level
+  automated evaluation metrics. Through human evaluation, we show that evaluation
+  metrics adopted from LLMs correlates better with human judgments compared with existing
+  faithfulness-level metrics. Finally, we demonstrate that LLMs using chain-of-thought
+  prompting can generate high-fidelity natural language feedback for other table-to-text
+  models' generations, provide insights for future work regarding the distillation
+  of text generation capabilities from LLMs to smaller models.
+authors:
+- Yilun Zhao
+- Haowei Zhang
+- Shengyun Si
+- Linyong Nan
+- Xiangru Tang
+- Arman Cohan
+project: other
+title: Large Language Models are Effective Table-to-Text Generators, Evaluators, and
+  Feedback Providers
+url: https://www.semanticscholar.org/paper/a15a98b7968edb7844882f9bb8005c9004e7bfcc
+venue: arXiv.org
+year: 2023

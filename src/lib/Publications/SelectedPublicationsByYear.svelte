@@ -8,7 +8,7 @@
     export let publications: PublicationsInterface;
 
     // Extracting all unique types
-    $: types = Array.from(new Set(publications.map((pub: PublicationInterface) => pub.type)));
+    $: types = Array.from(new Set(publications.map((pub: PublicationInterface) => pub.project)));
 
     let selectedType = "";
 
@@ -20,7 +20,7 @@
         years = {};
 
         publications.forEach((pub: PublicationInterface) => {
-            if (selectedType && pub.type !== selectedType) return;
+            if (selectedType && pub.project !== selectedType) return;
 
             let year = String(pub?.year as number);
 
@@ -35,7 +35,7 @@
 
 
 <div class="">
-    <label for="paperType">Filter by Type:</label>
+    <label for="paperType">Filter by Project:</label>
     <select id="paperType" bind:value={selectedType}>
         <option value="">All</option>
         {#each types as type}
@@ -55,16 +55,16 @@
                     {#each pubs as pub}
                         <div class="pb-4">
                             <div class="card-title break-word">
-                                {#if pub?.href}
-                                    <a class="link" href={pub?.href}>
+                                {#if pub?.url}
+                                    <a class="link" href={pub?.url}>
                                         {pub?.title}
                                     </a>
                                 {:else}
                                     {pub?.title}
                                 {/if}
                             </div>
-                            <span>{@html pub.makeAuthorString()}</span>
-                            <span>{@html pub.makePublicationString()}</span>
+                            <p>{@html pub.makeAuthorString()}</p>
+                            <p>{@html pub.makePublicationString()}</p>
                         </div>
                     {/each}
                 </div>

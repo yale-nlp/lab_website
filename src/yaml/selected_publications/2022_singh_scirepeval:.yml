@@ -1,0 +1,25 @@
+abstract: 'Learned representations of scientific documents can serve as valuable input
+  features for downstream tasks, without the need for further fine-tuning. However,
+  existing benchmarks for evaluating these representations fail to capture the diversity
+  of relevant tasks. In response, we introduce SciRepEval, the first comprehensive
+  benchmark for training and evaluating scientific document representations. It includes
+  25 challenging and realistic tasks, 11 of which are new, across four formats: classification,
+  regression, ranking and search. We then use the benchmark to study and improve the
+  generalization ability of scientific document representation models. We show how
+  state-of-the-art models struggle to generalize across task formats, and that simple
+  multi-task training fails to improve them. However, a new approach that learns multiple
+  embeddings per document, each tailored to a different format, can improve performance.
+  We experiment with task-format-specific control codes and adapters in a multi-task
+  setting and find that they outperform the existing single-embedding state-of-the-art
+  by up to 1.5 points absolute.'
+authors:
+- Amanpreet Singh
+- Mike D'Arcy
+- Arman Cohan
+- Doug Downey
+- Sergey Feldman
+project: other
+title: 'SciRepEval: A Multi-Format Benchmark for Scientific Document Representations'
+url: https://www.semanticscholar.org/paper/fc3e18542522de7732c91d2332224ec447b39d13
+venue: arXiv.org
+year: 2022

@@ -1,0 +1,27 @@
+abstract: 'Neural information retrieval often adopts a retrieve-and-rerank framework:
+  a bi-encoder network first retrieves K (e.g., 100) candidates that are then re-ranked
+  using a more powerful cross-encoder model to rank the better candidates higher.
+  The re-ranker generally produces better candidate scores than the retriever, but
+  is limited to seeing only the top K retrieved candidates, thus providing no improvements
+  in retrieval performance as measured by Recall@K. In this work, we leverage the
+  re-ranker to also improve retrieval by providing inference-time relevance feedback
+  to the retriever. Concretely, we update the retriever''s query representation for
+  a test instance using a lightweight inference-time distillation of the re-ranker''s
+  prediction for that instance. The distillation loss is designed to bring the retriever''s
+  candidate scores closer to those of the re-ranker. A second retrieval step is then
+  performed with the updated query vector. We empirically show that our approach,
+  which can serve arbitrary retrieve-and-rerank pipelines, significantly improves
+  retrieval recall in multiple domains, languages, and modalities.'
+authors:
+- R. Reddy
+- Pradeep Dasigi
+- Md Arafat Sultan
+- Arman Cohan
+- Avirup Sil
+- Heng Ji
+- Hannaneh Hajishirzi
+project: other
+title: Inference-time Re-ranker Relevance Feedback for Neural Information Retrieval
+url: https://www.semanticscholar.org/paper/9e3003e5c16aba62bdffd79347e3d10b6b12da74
+venue: arXiv.org
+year: 2023
