@@ -3,9 +3,15 @@
     import { Member } from '$lib/classes';
 
     export let member = new Member({
-        name: { first: 'Lab', last: 'Member' },
+        name: '',
         image: '',
-        about: 'Detailed information about the person...',
+        website: '',
+        twitter: '',
+        github: '',
+        google_scholar: '',
+        semantic_scholar: '',
+        about: '',
+        title: '',
     } as MemberInterface);
 
     let showDetails = false;
@@ -66,18 +72,62 @@
         font-size: large;
         font-weight: 600;
     }
+
+    .icons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .icon {
+        width: 24px; /* Adjust the size as needed */
+        height: 24px;
+        fill: white; /* Color of the icons */
+    }
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
 <div class="card" on:mouseenter={() => showDetails = true} on:mouseleave={() => showDetails = false}>
     {#if showDetails}
         <div class="details-container active">
             <h2>{member?.name}</h2>
+
+            <div class="icons">
+                {#if member?.website}
+                    <a href="{member?.website}">
+                        <i class="fas fa-home pr-1 icon"></i>
+                    </a>
+                {/if}
+                {#if member?.github}
+                    <a href="{member?.github}">
+                        <i class="fab fa-github icon"></i>
+                    </a>
+                {/if}
+                {#if member?.google_scholar}
+                    <a href="{member?.google_scholar}">
+                        <i class="ai ai-google-scholar ai-lg icon"></i>
+                    </a>
+                {/if}
+                {#if member?.twitter}
+                    <a href="{member?.twitter}">
+                        <i class="fab fa-twitter icon"></i>
+                    </a>
+                {/if}
+                {#if member?.semantic_scholar}
+                    <a href="{member?.semantic_scholar}">
+                        <i class="ai ai-semantic-scholar icon"></i>
+                    </a>
+                {/if}
+            </div>
+            
+
             <p>{member?.about}</p>
         </div>
     {:else}
         <figure class="flex-col bg-base-100" class:hidden={showDetails}>
             <div class="avatar inline-flex place-content-center place-items-start rounded-full bg-gradient-to-r from-cyan-500 to-blue-500">
-                <img src={member?.image} alt="{`${member?.name_str} profile image`}" class="w-full h-auto rounded-full" />
+                <img src={member?.image} alt="{`${member?.name} profile image`}" class="w-full h-auto rounded-full" />
             </div>
         </figure>
 
@@ -85,6 +135,9 @@
             <h2>
                 {member?.name}
             </h2>
+            <p>
+                {member?.title}
+            </p>
         </div>
     {/if}
 </div>

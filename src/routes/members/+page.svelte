@@ -4,7 +4,6 @@ export let data;
 import MemberInfo from '$lib/MemberInfo.svelte';  
 
 import JellyContainer from '$lib/Layout/JellyContainer.svelte';
-import TextHero from '$lib/Layout/Hero/TextHero.svelte';
 
 import _ from 'lodash'
 // console.log('members', _.groupBy(sorted, 'status')) 
@@ -14,65 +13,48 @@ $: curr = data?.members.filter(({isAlum})=>!isAlum)
 $: groups = _.groupBy(curr, 'status')
 
 import Hero from '$lib/Layout/Hero/Hero.svelte';
-const useStickyTextHero = false;
-const stickyClasses = 'sticky top-0 bg-base-100 z-[100] pb-8'
 
 
 import { onMount } from 'svelte'
-import { fly, fade } from 'svelte/transition';
 
 let animate = false
 onMount(() => {
     animate = true
 })
 
-const adjustGroup = (group) => {
-    switch (group) {
-        case 'PI':
-            return 'Principal Investigator'
-            break;
-        case 'postdoc':
-            return 'Postdoctoral Fellows'
-            break;
-    }
-}
 
 const groupOrder = [
     'PI', 
-    'postdoc', 
+    'phd', 
+    'visit_phd',
+    'master',
 ]
 
 </script>
 
 <Hero></Hero>
 
-<JellyContainer>
+<JellyContainer class="pt-16">
     {#await groups}
         Loading Members...
     {:then results}
 
-        <div class="my-0 py-0">
+    <div class="w-full">
+        <div class="text-center font-bold text-4xl">
+            People
+        </div>
+        <br>
+        <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {#each groupOrder as group, g}
         {@const members = results[group]}
-            <div class="my-0 py-0">         
-                <div class="w-full">
-                    <TextHero class="my-0 pt-0">
-                        <div slot="tagline" class="py-0 pt-0">
-                        {adjustGroup(group)}
-                        </div>
-                    </TextHero>
                     
-                    <div class="w-full">
-                        <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                            {#each members as member}        
-                            <MemberInfo {member}/> 
-                            {/each}  
-                        </ol>
-                    </div>
-                </div>
-            </div>
+
+        {#each members as member}        
+        <MemberInfo {member}/> 
+        {/each}  
         {/each}
-        </div>
+    </ol>
+    </div>
     {:catch error}
         {error.message}
     {/await}       

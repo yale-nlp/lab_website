@@ -30,35 +30,27 @@ export class Member implements MemberInterface {
     about?;
     image?;
     
-    cv?;    
+    twitter?;    
     website?;
 
-    isAlum?;
-    name_str?;
+    github?;
+    google_scholar?;
+    semantic_scholar?;
 
     constructor(member:MemberInterface) {
         this.name = member.name
         this.title = member.title
         this.about = member.about
-        this.cv = member.cv
         this.image = member.image
         this.website = member.website
-        this.isAlum = member.isAlum        
-        if (member?.name_str) {
-            this.name_str = this.makeNameStr()
-        } else {
-            this.name_str = member.name_str
-        }
+        this.github = member.github 
+        this.google_scholar = member.google_scholar
+        this.twitter = member.twitter
+        this.semantic_scholar = member.semantic_scholar
     }
 
     makeNameStr() {        
-        let first = this.name?.preferred ? this.name.preferred : this.name.first
-        let nameStr = first
-        if (this.name?.middle) {
-            nameStr += ` ${this.name.middle} `
-        }
-        nameStr += ` ${this.name.last}`
-        return nameStr
+        return this.name
     };
 }
 

@@ -42,27 +42,18 @@ export type PublicationCategories = PublicationCategory[] |
     ArrayLike<PublicationCategory>
 
 
-export interface MemberName {
-    first: string;
-    middle?: string;
-    last:string;
-    preferred?: string;
-}
-export type MemberNames = MemberName[] | Array<MemberName> | ArrayLike<MemberName>
 
 export interface Member {
-    name: MemberName;
+    name: string;
     title?: string;
-    
-    about?: string;
     image?: string;
-
-    cv?: string;
     website?: string;
-
-    isAlum?: boolean;
-    name_str?: string;
-    makeNameStr: () => string;
+    github?: string;
+    google_scholar?: string;
+    twitter?: string;
+    semantic_scholar?: string;
+    status?: string;
+    about?: string;
 }
 export type Members = Member[] 
     | Array<Member> 
