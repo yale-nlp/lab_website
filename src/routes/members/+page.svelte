@@ -51,18 +51,18 @@ const groupOrder = [
         Loading Members...
     {:then results}
 
-        <div class="my-4 py-4">
+        <div class="my-0 py-0">
         {#each groupOrder as group, g}
         {@const members = results[group]}
-            <div class="my-4 py-4">         
-                <div>
-                    <TextHero class="py-0 pt-0">
+            <div class="my-0 py-0">         
+                <div class="w-full">
+                    <TextHero class="my-0 pt-0">
                         <div slot="tagline" class="py-0 pt-0">
                         {adjustGroup(group)}
                         </div>
                     </TextHero>
                     
-                    <div class="flex flex-col items-center justify-center w-full">
+                    <div class="w-full">
                         <ol class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                             {#each members as member}        
                             <MemberInfo {member}/> 

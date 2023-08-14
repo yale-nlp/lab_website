@@ -15,8 +15,8 @@
     .card {
         position: relative;
         width: 100%; 
-        height: 250pt;
-        padding: 20px;
+        height: 210pt;
+        padding: 5px;
         border-radius: 8px;
         /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
         text-align: center;
@@ -28,10 +28,12 @@
     .details-container {
         background-color: rgb(255, 140, 0);
         color: white;
-        height: 200pt;
-        padding: 20px;
+        height: 205pt;
+        padding: 10px;
         opacity: 0;
         transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        display: flex; /* Add flex layout */
+        flex-direction: column; /* Stack children vertically */
     }
 
     .details-container.active {
@@ -42,6 +44,11 @@
         text-align: center;
         font-size: large;
         font-weight: 600;
+    }
+
+    .details-container p {
+        text-align: center;
+        font-size: small;
     }
 
     .avatar {
@@ -55,7 +62,9 @@
     }
 
     .card-body h2 {
-        margin: 10px 0; /* Added some margin around the name */
+        text-align: center;
+        font-size: large;
+        font-weight: 600;
     }
 </style>
 
@@ -73,7 +82,7 @@
         </figure>
 
         <div class="card-body">
-            <h2 class="card-title sticky {showDetails ? 'hidden' : ''}">
+            <h2>
                 {member?.name}
             </h2>
         </div>
