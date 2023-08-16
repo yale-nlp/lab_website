@@ -52,50 +52,6 @@
             </div>  
             {/if}
 
-            {#if project.publication.hasOneOfGithubOrJournal()}
-                <div class="text-center my-4">
-                    {project.makeTextAboutLinks()}
-                </div> 
-                
-                <div class="flex place-content-evenly place-items-center my-4">
-                    {#if project?.publication.github}
-                        <a 
-                            href="{project?.publication.github}" 
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <GitHub 
-                                on:click={()=>goto(String(project?.publication.github))} 
-                                class="h-12 w-12"
-                            />
-                        </a>
-                    {/if}
-
-                    {#if project?.publication.href}
-                        {#if project?.publication?.periodicalImage}
-                            <a 
-                                href="{project?.publication.href}" 
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                <figure>
-                                    <img 
-                                        class="h-12 max-h-min" 
-                                        src={project?.publication?.periodicalImage} 
-                                        alt="{project?.publication.periodical} image"
-                                    >
-                                </figure>
-                            </a>
-                        {:else}
-                            <button class="btn btn-link btn-primary btn-outline btn-ghost">
-                                <a href="{project?.publication.href}">
-                                    {project?.publication.periodical}
-                                </a>
-                            </button>                                    
-                        {/if}
-                    {/if}
-                </div>
-            {/if}
 
             {#if project?.publication.abstract}
                 <div class="inline-block text-slate-700 text-xl">

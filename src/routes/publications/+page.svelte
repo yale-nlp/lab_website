@@ -29,17 +29,6 @@ onMount(() => {
 
 <JellyContainer>
     <div class="flex flex-col place-items-center gap-8 mt-8">
-        
-        <!-- <PublicationCategories categories={data?.publicationCategories}/> -->
-        <!-- <div class="divider divider-vertical"></div> -->  
-        <div 
-            class="text-5xl font-light text-center"
-        >
-            Selected Publications
-        </div>
-
-        <!-- <div class="w-full"><D3Graph graph={data?.selectedGraph}/></div> -->
-        <!-- <SelectedPublicationsByYear publications={data?.selectedPublications} />   -->
         <SelectedPublicationsByYear publications={data?.selectedPublications} />        
 
     </div>    

@@ -84,23 +84,34 @@
         z-index: 0;
     }
 
-
+    .header-container {
+        display: flex;
+        flex-direction: column; /* Set direction to column to make elements stack vertically */
+        align-items: flex-end;  /* Align children to the end (right for LTR languages) */
+    }
+    .filter-container {
+        margin-top: 10px; /* Adjust this value for more/less space between title and filter */
+    }
 </style>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-<div>
-    <label for="paperType">Filter by Project:</label>
-    <select id="paperType" bind:value={selectedType}>
-        <option value="">All</option>
-        <!-- Assume types contains distinct projects -->
-        {#each types as type}
-            <option value={type}>{type}</option>
-        {/each}
-    </select>
+<div class="header-container">
+    <div class="text-center font-bold text-4xl">
+        Publications
+    </div>
+    <div class="filter-container">
+        <label for="paperType">Filter by Project:</label>
+        <select id="paperType" bind:value={selectedType}>
+            <option value="">All</option>
+            <!-- Assume types contains distinct projects -->
+            {#each types as type}
+                <option value={type}>{type}</option>
+            {/each}
+        </select>
+    </div>
 </div>
-
 {#each Object.entries(years).reverse() as [year, pubs]}
     <div>
         <div class="line-through-title">
