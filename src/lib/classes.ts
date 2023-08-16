@@ -75,7 +75,7 @@ export class Publication implements PublicationInterface {
 
     makeAuthorString() {        
         let a = this.authors
-        if (a.length > 10) {
+        if (a.length > 12) {
             a = [...a.slice(0, 7), '...',...a.slice(-3)]
         }
         let s = ''

@@ -30,45 +30,96 @@
 
             years[year].push(pub);
         });
+
+        // Sort publications for each year based on the venue, and make Arxiv the last
+        for (const year in years) {
+            years[year].sort((a, b) => {
+                if (a?.venue.includes("ArXiv")) return 1;
+                if (b?.venue.includes("ArXiv")) return -1;
+                return a?.venue.localeCompare(b?.venue);
+            });
+        }
     }
 </script>
 
 
-<div class="">
+
+<style>
+    .pub-title a {
+        color: #007BFF;
+        text-decoration: none; /* If you don't want underlined links */
+        font-weight: bold; /* This makes the title bold */
+    }
+
+    .pub-title a:hover {
+        text-decoration: underline; /* Underline on hover for better UX */
+    }
+
+    .pub-publication {
+        font-style: italic; /* This makes the publication string italic */
+    }
+
+    .line-through-title {
+        position: relative;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .line-through-title span {
+        background-color: #fff; /* Assuming your background is white. If not, change this. */
+        padding: 0 10px; /* Adjust as needed to give space around the text. */
+        z-index: 1;
+        position: relative;
+        font-size: xx-large;
+    }
+
+    .line-through-title::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: black; /* Adjust the color as needed. */
+        z-index: 0;
+    }
+
+
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div>
     <label for="paperType">Filter by Project:</label>
     <select id="paperType" bind:value={selectedType}>
         <option value="">All</option>
+        <!-- Assume types contains distinct projects -->
         {#each types as type}
             <option value={type}>{type}</option>
         {/each}
     </select>
-
-    {#each Object.entries(years).reverse() as [year, pubs]}
-        <div>
-            <div class="grid grid-flow-col auto-cols-auto py-4">
-                <div class="text-4xl font-extralight col-auto">
-                    <div class="sticky top-0 ">
-                        {year}
-                    </div>
-                </div>
-                <div class="ml-16 col-auto">
-                    {#each pubs as pub}
-                        <div class="pb-4">
-                            <div class="card-title break-word">
-                                {#if pub?.url}
-                                    <a class="link" href={pub?.url}>
-                                        {pub?.title}
-                                    </a>
-                                {:else}
-                                    {pub?.title}
-                                {/if}
-                            </div>
-                            <p>{@html pub.makeAuthorString()}</p>
-                            <p>{@html pub.makePublicationString()}</p>
-                        </div>
-                    {/each}
-                </div>
-            </div>
-        </div>
-    {/each}
 </div>
+
+{#each Object.entries(years).reverse() as [year, pubs]}
+    <div>
+        <div class="line-through-title">
+            <span>{year}</span>
+        </div>
+        {#each pubs as pub}
+            <li>
+                <span class="pub-authors" itemprop="author">
+                    {@html pub.makeAuthorString()}.
+                </span>
+
+                <span class="pub-title">     
+                    <a href={pub?.url} itemprop="url">{pub?.title}.</a>
+                </span>
+
+                <span class="pub-publication">
+                    {@html pub.makePublicationString()}. 
+                </span>
+            </li>
+        {/each}
+    </div>
+{/each}

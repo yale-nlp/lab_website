@@ -16,6 +16,13 @@ def find_authored_papers(author_id):
 
     return sorted(papers, key=lambda p: (-p['year'], p['title']))
 
+venue_dict = {
+    "Annual Meeting of the Association for Computational Linguistics": "ACL",
+    "Conference of the European Chapter of the Association for Computational Linguistics": "EACL",
+    "arXiv.org": "ArXiv",
+    "Conference on Empirical Methods in Natural Language Processing": "EMNLP",
+    "International Conference on Computational Linguistics": "COLING",
+}
 
 def main():
     parser = argparse.ArgumentParser()
@@ -32,6 +39,15 @@ def main():
         paper["authors"] = [author["name"] for author in paper["authors"]]
         del paper["paperId"]
         paper["project"] = "other"
+        
+        paper["title"] = paper["title"].strip(".")
+
+        if not paper["venue"]:
+            paper["venue"] = "Preprint"
+        else:
+            if paper["venue"] in venue_dict:
+                paper["venue"] = venue_dict[paper["venue"]]
+            paper["venue"] = f"In {paper['venue']} {year}"
 
         filename = f"{year}_{paper['authors'][0].split(' ')[-1].lower()}_{paper['title'].split(' ')[0].lower()}.yml"
 
