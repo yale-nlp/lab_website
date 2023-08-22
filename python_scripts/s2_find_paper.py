@@ -1,5 +1,6 @@
 import argparse
 import yaml
+import os
 
 import requests
 
@@ -26,9 +27,16 @@ venue_dict = {
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('author_id')
-    parser.add_argument('start_year')
+    parser.add_argument('--author_id', default='2527954')
+    parser.add_argument('--start_year', default='2022')
     args = parser.parse_args()
+
+    # paper might change the title, so we need to remove the previous record
+    existing_papers_dict = {}
+    for filename in os.listdir('src/yaml/selected_publications'):
+        filepath = f'src/yaml/selected_publications/{filename}'
+        paper = yaml.load(open(filepath, 'r'), Loader=yaml.FullLoader)
+        existing_papers_dict[paper["url"]] = filepath
 
     authored_papers = find_authored_papers(args.author_id)
     for paper in authored_papers:
@@ -51,10 +59,13 @@ def main():
 
         filename = f"{year}_{paper['authors'][0].split(' ')[-1].lower()}_{paper['title'].split(' ')[0].lower()}.yml"
 
-        yaml.dump(paper, stream=open(f'src/yaml/selected_publications/{filename}', 'w'), sort_keys=True)
+        filepath = f'src/yaml/selected_publications/{filename}'
+        if not os.path.exists(filepath):
+            yaml.dump(paper, stream=open(filepath, 'w'), sort_keys=True)
+            # paper might change the title, so we need to remove the previous record
+            if paper["url"] in existing_papers_dict:
+                os.remove(existing_papers_dict[paper["url"]])
             
-
-
 
 if __name__ == '__main__':
     main()

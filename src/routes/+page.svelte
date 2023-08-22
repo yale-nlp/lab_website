@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from 'svelte';
+
     /** @type {import('./$types').PageData} */
     export let data;
     import Hero from '$lib/Layout/Hero/Hero.svelte';
@@ -20,14 +22,17 @@
     }));
 
     // Load the Twitter widget if it's not already loaded
-    if (typeof twttr === 'undefined') {
-        let script = document.createElement("script");
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.charset = "utf-8";
-        document.head.appendChild(script);
-    } else {
-        twttr.widgets.load();
-    }
+    onMount(() => {
+        // Load the Twitter widget if it's not already loaded
+        if (typeof twttr === 'undefined') {
+            let script = document.createElement("script");
+            script.src = "https://platform.twitter.com/widgets.js";
+            script.charset = "utf-8";
+            document.head.appendChild(script);
+        } else {
+            twttr.widgets.load();
+        }
+    });
 </script>
 
 <style>
