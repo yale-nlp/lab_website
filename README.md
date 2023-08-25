@@ -1,5 +1,6 @@
-# Krishnaswamy Lab Website
-The Krishnaswamy Lab website is built primarily with Svelte, DaisyUI, SvelteKit, Tailwindcss, and Typescript. Data is managed via static YAML files.
+# YaleNLP Lab Website
+YaleNLP Lab website is built primarily with Svelte, DaisyUI, SvelteKit, Tailwindcss, and Typescript. Data is managed via static YAML files.
+The template is borrowed from https://github.com/KrishnaswamyLab/krishnaswamy-lab-site
 
 # Contributing
 Are you a lab member trying to update information on the website? Then this is the section for you!
@@ -7,13 +8,11 @@ Are you a lab member trying to update information on the website? Then this is t
 The majority of the site's content is stored as independent YAML files under the directory
 `src/yaml/<data-type>/<record>.yml`, where `data-type` is one of:
 
-- `affiliations`: Smita Krishnaswamy's affiliations listed on the home page.
-- `courses`: Selected courses that Smita Krishnaswamy teaches listsed under `https://www.krishnaswamylab.org/teaching`.
-- `members`: Information about members under `https://www.krishnaswamylab.org/members`.
-- `projects`: Information about projects listed under `https://www.krishnaswamylab.org/projects`.
-- `research_categories`: The types of research the Krishnaswamy Lab does listed on the home page.
-- `selected_publications`: Selected publications for Smita Krishnaswamy `https://www.krishnaswamylab.org/publications`.
-- `workshops`/year: Information about the workshops lead by Smita Krishnaswamy listed on `https://www.krishnaswamylab.org/workshops`.
+- `courses`: Selected courses are under `https://nlp.cs.yale.edu/teaching`.
+- `members`: Information about members under `https://nlp.cs.yale.edu/members`.
+- `projects`: Information about projects listed under `https://nlp.cs.yale.edu/projects`.
+- `research_categories`: Research projects
+- `selected_publications`: Selected papers `https://nlp.cs.yale.edu/publications`.
 
 and `<record>` is just the filename and represents a single element of the `data-type`. What is important is the content of the file not the name! Having a descriptive name makes it easier for humans to find and update.
 
@@ -22,7 +21,7 @@ So what should you put in a record? Well that is dependant on its *type*. The en
 **NOTE**: the presence of a `?` means that the property is optional!
 
 # Types
-Types are defined [here](https://github.com/KrishnaswamyLab/krishnaswamy-lab-site/blob/main/src/lib/types.ts)
+Types are defined [here](https://github.com/yale-nlp/lab_website/blob/main/src/lib/types.ts)
 
 ## Affiliations
 
