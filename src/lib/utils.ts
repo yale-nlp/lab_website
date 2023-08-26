@@ -14,8 +14,8 @@ export const openUrlInNewTab = (url:string) => {
     }
 }
 
-export const LabTwitterLink = 'https://twitter.com/KrishnaswamyLab'
-export const LabGitHubLink = 'https://github.com/KrishnaswamyLab'
+export const LabTwitterLink = 'https://twitter.com/yalenlp'
+export const LabGitHubLink = 'https://github.com/yale-nlp'
 
 export const toTwitter = () => openUrlInNewTab(LabTwitterLink)
 export const toGitHub = () => openUrlInNewTab(LabGitHubLink)
