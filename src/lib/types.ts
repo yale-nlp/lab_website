@@ -87,8 +87,8 @@ export interface PublicationsGroupedByYear {
 export interface Project {    
     title: string;
     href:string; 
-    project_category?: string;         
-    tldr?: string;
+    project_category: string;         
+    tldr: string;
     description?: string;
 
     hero: ImageHero;
@@ -98,37 +98,11 @@ export type Projects = Project[]
     | Array<Project> 
     // | ArrayLike<Project>
 
-export type ResearchExample = Link
-
-export type ResearchExamples = ResearchExample[] 
-    | Array<ResearchExample> 
-    | ArrayLike<ResearchExample>
-
-export interface ResearchCategory {
-    title: string;
-    about: string;
-    image: string;
-    sort?:number;
-    examples?: ResearchExamples;
-}
-
-export type ResearchCategories = ResearchCategory[]
-    | Array<ResearchCategory>
-
 export interface quote {
     text:string;
     attributed:string;
 }
 
-export interface Affiliation {
-    title:string;
-    href:string;
-    about:string;
-    quote?:quote;
-    sort?:number;
-}
-export type Affiliations = Affiliation[]
-    | Array<Affiliation>
 
 
 import type {ComponentType, SvelteComponentTyped} from 'svelte'
@@ -136,26 +110,3 @@ import type {ComponentType, SvelteComponentTyped} from 'svelte'
 export interface  ComponentMap {
     [key: string]: ComponentType | SvelteComponentTyped
 }
-
-export interface SyllabusDayItem {
-    col1?: string | null;
-    href: string;
-    col2: any | ComponentType | SvelteComponentTyped;
-    col3: string;
-}
-export type SyllabusDayItems = SyllabusDayItem[] 
-    | Array<SyllabusDayItem> 
-    
-
-export interface SyllabusDay {
-    day: string;
-    items: SyllabusDayItems
-}
-
-export type Syllabus = SyllabusDay[] 
-    | Array<SyllabusDay> 
-    
-
-export type Syllabi = Syllabus[] 
-    | Array<Syllabus> 
-    
