@@ -29,7 +29,7 @@
                     <span class="tracking-wide text-xl font-bold text-gray-700 title">{project?.title}</span>
                 </div>
                 <div class="p-4 h-36 text-left">
-                    <p class="text-gray-500 text-sm">{project?.description}</p>
+                    <p class="text-gray-500 text-sm">{project?.tldr}</p>
                 </div>
             </div>
         </li>

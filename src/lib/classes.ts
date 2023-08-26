@@ -101,29 +101,17 @@ export class Publication implements PublicationInterface {
 export class Project implements ProjectInterface {
     href;
     title;
-    abbreviation;
+    tldr;
     description;
     hero;
-    publication;
+    project_category;
 
     constructor(project:ProjectInterface) {
         this.href = project.href
         this.title = project.title
-        this.abbreviation = project.abbreviation
+        this.tldr = project.tldr
         this.description = project.description
         this.hero = project.hero
-        this.publication = new Publication(project.publication)
-    }
-
-    makeTextAboutLinks() {        
-        return `
-        You can access 
-        ${this.hero.title}'s
-        ${this?.publication?.github ? 'Github repository' : ''}
-        ${this.publication.hasBothGithubAndJournal() ? 'and' : ''}
-        ${this?.publication?.href  ? 'article page' : ''}
-        by clicking the link${this.publication.hasBothGithubAndJournal() ? 's' : ''}
-        below
-        `
+        this.project_category = project.project_category
     }
 }

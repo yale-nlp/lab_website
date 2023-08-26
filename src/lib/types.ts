@@ -85,14 +85,13 @@ export interface PublicationsGroupedByYear {
     [key: string]: Publications;
 }
 export interface Project {    
-    href:string;
-    title: string;    
-    abbreviation?: string;        
+    title: string;
+    href:string; 
+    project_category?: string;         
+    tldr?: string;
     description?: string;
 
     hero: ImageHero;
-    publication: Publication;
-    makeTextAboutLinks: () => string;
 }
 
 export type Projects = Project[] 

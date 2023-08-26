@@ -2,20 +2,17 @@
 import { error } from '@sveltejs/kit';
 import type {Publications, Projects, Project as ProjectInterface} from '$lib/types'
 import {Publication, Project} from '$lib/classes'
-import {SortProjectByYear, LoadGlobsAllAtOnces} from '$lib/utils'
+import {SortProjectByYear, SortPublicationsByYear, LoadGlobsAllAtOnces} from '$lib/utils'
 
 export interface ProjectData {
     project: ProjectInterface;
-    routes: {
-        title: string;
-        abbreviation?: string;
-        href?: string;
-    }[];
     slug: string;
+    selectedPublications: Publications;
 }
 
 // import projects from '$lib/data/projects.json'
 const yamls = import.meta.glob('/src/yaml/projects/*.yml', {import: 'default'})
+const pub_yamls = import.meta.glob('/src/yaml/selected_publications/*.yml', {import: 'default'})
 
 export async function load({ params }) {     
   let projects = (await LoadGlobsAllAtOnces(yamls) as Projects)
@@ -28,18 +25,11 @@ export async function load({ params }) {
     throw error(404, `Project with slug=${slug} not found`);
   }
   const project = new Project(matches[0] as ProjectInterface)  
-
-  const pubTitle = project?.publication?.title
-  if (pubTitle === undefined || pubTitle === null) {
-    throw error(404, `Project with slug=${slug} not found`);
-  }
   
-  const routes = sorted
-    .filter(({href, publication:{title}}) => !!href && !!title)
-    .map(({title, abbreviation, href}) => {        
-        return {title, abbreviation, href}
-    })
-    
-  const data = {project, routes, slug} as ProjectData  
+  let publications = (await LoadGlobsAllAtOnces(pub_yamls) as Publications)
+  let allPublications = publications.map(e=>new Publication(e)).sort(SortPublicationsByYear)
+
+  let selectedPublications = allPublications.filter(pub => pub.project === project?.project_category);
+  const data = {project, slug, selectedPublications} as ProjectData  
   return data;
 }
