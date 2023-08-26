@@ -1,0 +1,24 @@
+const data = {
+  "abstract": "Functional magnetic resonance imaging (fMRI) is a crucial technology for gaining insights into cognitive processes in humans. Data amassed from fMRI measurements result in volumetric data sets that vary over time. However, analysing such data presents a challenge due to the large degree of noise and person-to-person variation in how information is represented in the brain. To address this challenge, we present a novel topological approach that encodes each time point in an fMRI data set as a persistence diagram of topological features, i.e. high-dimensional voids present in the data. This representation naturally does not rely on voxel-by-voxel correspondence and is robust to noise. We show that these time-varying persistence diagrams can be clustered to find meaningful groupings between participants, and that they are also useful in studying within-subject brain state trajectories of subjects performing a particular task. Here, we apply both clustering and trajectory analysis techniques to a group of participants watching the movie 'Partly Cloudy'. We observe significant differences in both brain state trajectories and overall topological activity between adults and children watching the same movie.",
+  authors: [
+    "Bastian Rieck",
+    "Tristan Yates",
+    "Christian Bock",
+    "Karsten Borgwardt",
+    "Guy Wolf",
+    "Nicholas Turk-Browne",
+    "Smita Krishnaswamy"
+  ],
+  href: "https://arxiv.org/abs/2006.07882v2",
+  keywords: [],
+  month: 6,
+  periodical: "NeurIPS",
+  publisher: "Neural information processing systems foundation",
+  selected: true,
+  title: "Uncovering the Topology of Time-Varying fMRI Data using Cubical Persistence",
+  type: "Journal Article",
+  year: 2020
+};
+
+export { data as default };
+//# sourceMappingURL=2020_rieck_uncovering-65408c47.js.map

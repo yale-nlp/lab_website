@@ -1,0 +1,15 @@
+const data = {
+  about: "Alex Gonopolskiy was a software developer associated with the lab and worked on developing novel algorithms for the analysis of biological data. Prior to that he has worked in algorithmic trading for several years. He graduated from the University of Michigan in 2007 obtained and his MA degree in Computer Science specializing in Intelligent Systems. He is currently a Data engineer at QuantCo.",
+  image: "",
+  isAlum: true,
+  name: {
+    first: "Alex",
+    last: "Gonopolskiy",
+    preferred: "Alex"
+  },
+  name_str: "Alex Gonopolskiy",
+  publications: []
+};
+
+export { data as default };
+//# sourceMappingURL=alex_gonopolskiy-b56bb77e.js.map
